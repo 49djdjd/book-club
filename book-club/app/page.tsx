@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Home() {
   const [username, setUserName] = useState("");
   const [message, setMessage] = useState("");
+  const [submit, setSubmit] = useState(false);
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-yellow-50 font-sans">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16">
@@ -24,7 +25,20 @@ export default function Home() {
               {message && (
                 <div className="absolute items-center inset-0 flex justify-center ">
                   <div className="bg-white p-8 justify-center font-mono text-center flex w-xl items-center">
-                    <p className="z-50 text-xl w-lg text-black">{message} <br></br> <input type="text" value={username} onChange={(e) => setUserName(e.target.value)} className="bg-stone-100 mt-2 hover:bg-stone-200"></input></p>
+                    {/* referneced ai on how to work the handle submit (i didnt know how to make it based on enter (but i do now!)) */}
+                    <p className="z-50 text-xl w-lg text-black">{message} <br></br> <form onSubmit={(e) => {
+                      e.preventDefault(); if(username.trim()){
+                        setMessage(`Wait a minute! You are the ${username}?!? This message is for you! :P`);
+                        setSubmit(true);
+                      }
+                      }
+                    }>
+                    {!submit ? (
+                    <input type="text" value={username} onChange={(e) => setUserName(e.target.value)} className="bg-stone-100 mt-2 hover:bg-stone-200"></input> 
+                    ):(
+                      <button onClick={()=> setMessage("")} className="text-sm rounded-sm bg-stone-100 mt-4 p-2 text-gray">Close</button>
+                    )}
+                    </form> </p>
                     {/* used ai to double check for the syntax of the on change */}
                     
                     </div>
