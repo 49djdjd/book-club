@@ -10,7 +10,10 @@ export default function Home() {
               {/* mozilla/mdn is used to reference how to do clip path */}
               <div className="bg-yellow-100 w-full h-80 [clip-path:polygon(0_0,100%_0,50%_100%)]">
               </div>
-              <div className="absolute rounded-full bg-white w-20 h-20 translate-y-65 border-10 "></div>
+              <div className="absolute flex items-center z-0 justify-center rounded-full opacity-75 bg-cyan-700 w-20 h-20 font-stamp translate-y-9/3 ">
+                <h1 className="text-6xl z-40 text opacity-100 -cyan-600">A </h1>
+              </div>
+              
             </div>
           </div>
         </div>
