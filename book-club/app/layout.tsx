@@ -12,6 +12,10 @@ const stampFont = localFont({
   src:'../public/font.ttf',
   variable: '--font-stamp',
 });
+const letterFont = localFont({
+  src:'../public/letter.ttf',
+  variable: '--font-letter',
+});
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -30,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${stampFont.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${stampFont.variable} ${letterFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

@@ -28,3 +28,6 @@ body {
 @theme{
   --font-stamp: var(--font-stamp), helvetica;
 }
+@theme{
+  --font-letter: var(--font-letter), helvetica;
+}
