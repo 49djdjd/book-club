@@ -4,6 +4,7 @@ export default function Home() {
   const [username, setUserName] = useState("");
   const [message, setMessage] = useState("");
   const [submit, setSubmit] = useState(false);
+  const [envOpen, isEnvOpen] = useState("false")
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-yellow-50 font-sans">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16">
@@ -13,7 +14,7 @@ export default function Home() {
               {/* used ai for debugging drop shadow (issue with the clip-path) */}
               <div className="drop-shadow-md w-full h-80">
               {/* mozilla/mdn is used to reference how to do clip path, ai was used to debug to make the gradient bottom only */}
-              <div className="bg-sky-900 opacity-70 w-full h-80 bg-gradient-to-b from-sky-800 to-sky-900 [clip-path:polygon(0_0,100%_0,50%_100%)]">
+              <div className="group bg-sky-900 opacity-70 w-full h-80 bg-gradient-to-b from-sky-800 to-sky-900 origin-top transition-transform duration-500 rotate-x-0 group-hover:-rotate-x-180 [clip-path:polygon(0_0,100%_0,50%_100%)]">
               </div>
               </div>
               <div className="absolute flex items-center z-0 justify-center rounded-full opacity-85 bg-cyan-700 w-20 h-20  translate-y-9/3 hover: ">
