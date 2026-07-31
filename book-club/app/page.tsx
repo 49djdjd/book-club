@@ -32,9 +32,9 @@ export default function Home() {
 
               </div>
               
-              <div className="relative flex items-center justify-center bg-orange-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[144%] translate-x-[97.75%] [clip-path:polygon(0_50%,100%_0,100%_100%)]"></div>
-               <div className="relative flex items-center justify-center bg-orange-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[244%] [clip-path:polygon(0_0,100%_50%,0_100%)]"></div>
-               <div className="relative flex items-center justify-center bg-black opacity-75 w-full h-62 origin-top transition-transform duration-500 -translate-y-[592%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
+              <div className="relative flex items-center justify-center opacity-100 bg-sky-900 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[144%] translate-x-[97.75%] [clip-path:polygon(0_50%,100%_0,100%_100%)]"></div>
+               <div className="relative flex items-center justify-center bg-sky-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[244%] [clip-path:polygon(0_0,100%_50%,0_100%)]"></div>
+               <div className="relative flex items-center justify-center bg-sky-900 opacity-95 w-full h-62 origin-top transition-transform duration-500 -translate-y-[592%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
               
               </div>
               
