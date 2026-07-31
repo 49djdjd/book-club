@@ -32,7 +32,9 @@ export default function Home() {
 
               </div>
               <div className="relative flex items-center justify-center bg-sky-900 opacity-40 w-full h-56 bg-gradient-to-b from-sky-800 to-sky-900 origin-top transition-transform duration-500 -translate-y-[210%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
-              <div className="relative flex items-center justify-center bg-orange-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[188.75%] translate-x-[98%] [clip-path:polygon(0_50%,100%_0,100%_100%)]"></div>
+              <div className="relative flex items-center justify-center bg-orange-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[188.75%] translate-x-[97.75%] [clip-path:polygon(0_50%,100%_0,100%_100%)]"></div>
+               <div className="relative flex items-center justify-center bg-orange-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[288.75%] [clip-path:polygon(0_0,100%_50%,0_100%)]"></div>
+              
               </div>
               
               {/* used ai to figure out what inset 0 was and how to use it (was not centering for the life of me...) also i did message on the outside to make sure it was clickable */}
