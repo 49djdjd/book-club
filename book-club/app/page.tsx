@@ -6,6 +6,7 @@ export default function Home() {
   const [submit, setSubmit] = useState(false);
   const [envelope, openEnvelope] = useState(false)
   const [envOpen, isEnvOpen] = useState(false)
+  const [note, setNote] = useState(false);
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-yellow-50 font-sans">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16">
@@ -18,23 +19,23 @@ export default function Home() {
               {/* mozilla/mdn is used to reference how to do clip path, ai was used to debug to make the gradient bottom only */}
               <div className={`flex items-center justify-center bg-sky-900 opacity-70- w-full h-80 bg-gradient-to-b from-sky-800 to-sky-900 origin-top transition-transform duration-500 [clip-path:polygon(0_0,100%_0,50%_100%)] ${envelope ? `-scale-y-100 opacity-100 z-10` : `scale-y-100 z-30`}`}>
               </div>
-               <div className={`absolute flex items-center justify-center z-30 rounded-full opacity-85 bg-cyan-700 w-20 h-20  transition-transform duration-500 -translate-y-4/5 translate-x-11/3 ${envelope ? '-translate-y-160' : 'rotate-0'}`}>
+               <div className={`absolute flex items-center justify-center z-30 rounded-full opacity-85 bg-cyan-700 w-20 h-20  transition-transform duration-500 -translate-y-5/3 translate-x-11/3 ${envelope ? '-translate-y-160' : 'rotate-0'}`}>
                 <button onClick={() => setMessage("STOP! Do not read! This mail is reserved for a special person... By  the way, what is your name? ")} className="text-5xl text-blue-100 ">
                   <h1 className="text-6xl z-20 font-stamp text opacity-100 -cyan-600">A</h1>
                   </button>
               </div>
               </div>
-              {/* referenced ai for the syntax of swithching tailwind based on states */}
-              <div className={`bg-white -translate-y-2/3 text-black font-mono z-30 translate-x-1/12 w-xl transition-transform duration-500 h-100 ${envelope ? `opacity-100 -translate-y-[90%]` : `opacity-0 -translate-y-2/3` }`}>
+              {/* referenced ai for the syntax of swithching tailwind based on states and on how to do two conditiosn withine ach other (envelope and note)*/}
+              <div onClick={() => setNote(!note)} className={`bg-white text-black font-mono translate-x-1/12 w-xl transition-transform duration-300 h-100 p-6 cursor-pointer ${envelope ? `opacity-100 z-50 ${ note ? `-translate-y-[120%]` : `-translate-y-[75%]`}` : `opacity-0 -translate-y-2/3 z-0`}`}>
               <h1>Dear {username}, </h1>
               <br></br>
               <p>(not sure what to do..)You are invited to our exclusive book club! We are going to be having a meeting later today, please come ready with the book fully read AND annotated so that we may have a proper discussion! This will determine your future standing within the club...</p>
 
               </div>
               
-              <div className="relative flex items-center justify-center opacity-100 bg-sky-900 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[144%] translate-x-[97.75%] [clip-path:polygon(0_50%,100%_0,100%_100%)]"></div>
-               <div className="relative flex items-center justify-center bg-sky-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[244%] [clip-path:polygon(0_0,100%_50%,0_100%)]"></div>
-               <div className="relative flex items-center justify-center bg-sky-900 opacity-95 w-full h-62 origin-top transition-transform duration-500 -translate-y-[592%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
+              <div className="relative pointer-events-none flex items-center justify-center opacity-100 bg-sky-900 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[144%] translate-x-[97.75%] [clip-path:polygon(0_50%,100%_0,100%_100%)]"></div>
+               <div className="relative pointer-events-none flex items-center justify-center bg-sky-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[244%] [clip-path:polygon(0_0,100%_50%,0_100%)]"></div>
+               <div className="relative pointer-events-none flex items-center justify-center bg-sky-900 opacity-95 w-full h-62 origin-top transition-transform duration-500 -translate-y-[592%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
               
               </div>
               
