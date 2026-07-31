@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import Link from "next/link";
 export default function Home() {
   const [username, setUserName] = useState("");
   const [message, setMessage] = useState("");
@@ -7,6 +8,7 @@ export default function Home() {
   const [envelope, openEnvelope] = useState(false)
   const [envOpen, isEnvOpen] = useState(false)
   const [note, setNote] = useState(false);
+  const [bookStore, setBookStore] = useState(false);
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-yellow-50 font-sans">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16">
@@ -31,12 +33,14 @@ export default function Home() {
                <div className="relative pointer-events-none z-10 flex items-center justify-center bg-sky-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[164%] [clip-path:polygon(0_0,100%_50%,0_100%)]"></div>
                <div className="relative pointer-events-none z-10 flex items-center justify-center bg-sky-900 opacity-95 w-full h-62 origin-top transition-transform duration-500 -translate-y-[431%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
                {/* referenced ai for the syntax of swithching tailwind based on states and on how to do two conditiosn withine ach other (envelope and note)*/}
-              <div onClick={() => setNote(!note)} className={`bg-white text-black font-mono translate-x-1/12 w-xl transition-transform duration-300 h-120 p-6 cursor-pointer ${envelope ? `opacity-100 z-50 ${ note ? `-translate-y-[355%]` : `-translate-y-[325%]`}` : `opacity-0 -translate-y-2/3 z-0`}`}>
+              <div onClick={() => setNote(!note)} className={`bg-white text-black font-mono translate-x-1/12 w-xl transition-transform duration-1000 -translate-y-[325%] h-120 p-6 cursor-pointer ${envelope ? `opacity-100 z-50 ${ note ? `-translate-y-[355%]` : `-translate-y-[325%]`}` : `opacity-0 z-0`}`}>
               <h1>Dear {username}, </h1>
               <br></br>
               <p>(not sure what to do..)You are invited to our exclusive book club! We are going to be having a meeting later today, please come ready with the book fully read AND annotated so that we may have a proper discussion! This will determine your future standing within the club...</p>
 
               </div>
+              <Link href="/bookstore"><button>Continue!</button></Link>
+              
               </div>
               
               {/* used ai to figure out what inset 0 was and how to use it (was not centering for the life of me...) also i did message on the outside to make sure it was clickable */}
