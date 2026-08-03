@@ -12,7 +12,7 @@ export default function Home(){
             <h3 className="text-black font-mono text-xl">Welcome! Which book would you like to purchase? (Remember you can only pick one these books!)</h3>
             </div>
       {/* used ai to learn abuot over-flow hidden and refenrced for the div structure (didnt know how to make all of these images the same size) */}
-          <div className="flex items-center [perspective:1000px] justify-center mt-10  gap-4">
+          <div onClick={() => setCardsFlip(false)} className="flex items-center [perspective:1000px] justify-center mt-10 gap-4">
           <div className="relative overflow-hidden w-48 h-64 [transform-style:preserve-3d]">
             <Image
               src="/stonerBook.jpg"
@@ -21,7 +21,7 @@ export default function Home(){
               height={300}
               className="w-full absolute inset-0 [backface-visibility:hidden] h-auto"
             />
-            <div className='bg-black absolute [backface-visibility:hidden] [transform-style:preserve-3d]inset-0 [transform:rotateY(180deg)]'></div>
+            <div className={`bg-black absolute inset-0 ${cardFlip ? '[transform-style:preserve-3d] [transform:rotateY(180deg)]':'[backface-visibility:hidden]'}`} ></div>
             
           </div>
           <div className="w-48 h-64 overflow-hidden hover:scale-120">
