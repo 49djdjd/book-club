@@ -12,14 +12,15 @@ export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-yellow-50 font-sans">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16">
+        <h1 className={`text-orange-200 text-9xl ${envelope ? `opacity-0` : `opacity-100`}`}>Book Club!</h1>
         <div className="flex justify-center items-center">
           <div className="group relative">
-            <div className=" flex relative justify-center mt-50 w-2xl h-125 shadow-md bg-sky-900">
+            <div className=" flex relative justify-center mt-30 w-2xl h-125 shadow-md bg-sky-900">
               {/* used ai for debugging drop shadow (issue with the clip-path) */}
-              <div className="drop-shadow-md w-full h-80">
+              <div className="drop-shadow-md w-full perspective-dramatic h-80">
                 <div>
               {/* mozilla/mdn is used to reference how to do clip path, ai was used to debug to make the gradient bottom only */}
-              <div className={`flex items-center justify-center bg-sky-900 opacity-70- w-full h-80 bg-gradient-to-b from-sky-800 to-sky-900 origin-top transition-transform duration-500 [clip-path:polygon(0_0,100%_0,50%_100%)] ${envelope ? `-scale-y-100 opacity-100 z-10` : `scale-y-100 z-30`}`}>
+              <div className={`flex items-center justify-center bg-sky-900 opacity-70- w-full h-80 bg-gradient-to-b from-sky-800 to-sky-900 origin-top perspective-dramatic transition-transform duration-500 [clip-path:polygon(0_0,100%_0,50%_100%)] ${envelope ? `rotate-x-180 opacity-100 z-10` : `scale-y-100 z-30`}`}>
               </div>
                <div className={`absolute flex items-center justify-center z-30 rounded-full opacity-85 bg-cyan-700 w-20 h-20  transition-transform duration-500 -translate-y-5/3 translate-x-11/3 ${envelope ? '-translate-y-160' : 'rotate-0'}`}>
                 <button onClick={() => setMessage("STOP! Do not read! This mail is reserved for a special person... By  the way, what is your name? ")} className="text-5xl text-blue-100 ">
@@ -31,17 +32,19 @@ export default function Home() {
               
               <div className="relative pointer-events-none z-10 flex items-center justify-center opacity-100 bg-sky-900 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[64%] translate-x-[97.75%] [clip-path:polygon(0_50%,100%_0,100%_100%)]"></div>
                <div className="relative pointer-events-none z-10 flex items-center justify-center bg-sky-900 opacity-100 w-85 h-125 origin-top transition-transform duration-500 -translate-y-[164%] [clip-path:polygon(0_0,100%_50%,0_100%)]"></div>
-               <div className="relative pointer-events-none z-10 flex items-center justify-center bg-sky-900 opacity-95 w-full h-62 origin-top transition-transform duration-500 -translate-y-[431%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
+               <div className="relative pointer-events-none z-10 flex items-center justify-center bg-sky-900 opacity-97 w-full h-62 origin-top transition-transform duration-500 -translate-y-[431%] [clip-path:polygon(50%_0,100%_100%,0_100%)]"></div>
                {/* referenced ai for the syntax of swithching tailwind based on states and on how to do two conditiosn withine ach other (envelope and note)*/}
-              <div onClick={() => setNote(!note)} className={`bg-white text-black font-mono translate-x-1/12 w-xl transition-transform duration-1000 -translate-y-[325%] h-120 p-6 cursor-pointer ${envelope ? `opacity-100 z-50 ${ note ? `-translate-y-[355%]` : `-translate-y-[325%]`}` : `opacity-0 z-0`}`}>
+              <div onClick={() => setNote(!note)} className={`bg-white text-black font-mono translate-x-1/12 w-xl transition-transform duration-1000 -translate-y-[325%] h-120 p-6 cursor-pointer ${envelope ? `opacity-100 z-50 ${ note ? `-translate-y-[360%]` : `-translate-y-[325%]`}` : `opacity-0 z-0`}`}>
               <h1>Dear {username}, </h1>
               <br></br>
-              <p>(not sure what to do..)You are invited to our exclusive book club! We are going to be having a meeting later today, please come ready with the book fully read AND annotated so that we may have a proper discussion! This will determine your future standing within the club...</p>
-
+              <p className="ml-6 mr-6">You are invited to our exclusive book club! We are going to be having a meeting later today, please come ready with the book fully read AND annotated so that we may have a proper discussion! This will determine your future standing within the club... You do know what book we are reading right? (P.S its The Bell Jar by Sylvia Plath!)</p>
+              <div className="flex justify-center items-center">
+                <br></br>
+              <Link href="/bookstore"><button className={`bg-orange-300 z-40 p-4 mt-10 border-black ${note ? `opacity-100` : `opacity-0`}`}>Continue!</button></Link>
               </div>
-              <Link href="/bookstore"><button>Continue!</button></Link>
+              </div>
+              </div>
               
-              </div>
               
               {/* used ai to figure out what inset 0 was and how to use it (was not centering for the life of me...) also i did message on the outside to make sure it was clickable */}
               {message && (
