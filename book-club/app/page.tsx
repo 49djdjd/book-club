@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useState } from "react";
 import Link from "next/link";
 export default function Home() {
@@ -63,7 +63,8 @@ export default function Home() {
                     ):(
                       <button onClick={()=> { setMessage(""); openEnvelope(true); }} className="text-sm rounded-sm bg-stone-100 mt-4 p-2 text-gray">Close</button>
                     )}
-                    </form> </p>
+                    </form> 
+                    </p>
                     {/* used ai to double check for the syntax of the on change */}
                     
                     </div>
