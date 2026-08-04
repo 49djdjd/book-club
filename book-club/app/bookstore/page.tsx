@@ -2,13 +2,18 @@
 import Image from 'next/image';
 import { useState } from 'react';
 const Icards = [
-  {id: 1, bookId: 'stoner', title: 'Stoner', imgSrc:'/stonerBook.jpg', isFlipped: false, isMatched: false},
-  {id: 2, bookId: 'stoner', title: 'Stoner', imgSrc:'/stonerBook.jpg', isFlipped: false, isMatched: false},
+  {id: 1, bookId: 'stoner', title: 'Stoner', imgSrc:'/1stonerBook.jpg', isFlipped: false, isMatched: false},
+  {id: 2, bookId: 'stoner', title: 'Stoner', imgSrc:'/1stonerBook.jpg', isFlipped: false, isMatched: false},
   {id: 3, bookId: 'bell-jar', title: 'The Bell Jar', imgSrc:'/theBellJar.jpg', isFlipped: false, isMatched: false},
   {id: 4, bookId: 'bell-jar', title: 'The Bell Jar', imgSrc:'/theBellJar.jpg', isFlipped: false, isMatched: false},
   {id: 5, bookId: 'ripley', title: 'The Talented Mr. Ripley', imgSrc:'/theTalentedMrRipley.jpg', isFlipped: false, isMatched: false},
   {id: 6, bookId: 'ripley', title: 'The Talented Mr. Ripley', imgSrc:'/theTalentedMrRipley.jpg', isFlipped: false, isMatched: false},
 ];
+
+function mixArray(array){
+  // referneced ai for this syntax (i didnt even know about ... before (but now i know lol))
+  return[...array].sort(() => Math.random()-0.5);
+}
 export default function Home(){
   const bookTitle = ["Stoner", "The Talented Mr. Ripley", "The Bell Jar"];
   const [game, startGame] = useState(false);
@@ -19,37 +24,20 @@ export default function Home(){
         <div className="flex flex-col justify-center items-center">
             <h3 className="text-black font-mono text-xl">Welcome! Which book would you like to purchase? (Remember you can only pick one these books!)</h3>
             </div>
-      {/* used ai to learn abuot over-flow hidden and refenrced for the div structure (didnt know how to make all of these images the same size) */}
+       {/* used ai to refernce for the card loop (tried it at first but was really confused) */}
           <div className="flex items-center [perspective:1000px] justify-center mt-10 gap-4">
-          <div className="relative overflow-hidden w-48 h-64 [transform-style:preserve-3d]">
-            <Image
-              src="/stonerBook.jpg"
-              alt="Stoner Cover"
+          {/* learned how to use the map function to go through arrays */}
+          {cards.map((card) => (
+            <div key={card.id} className='relative w-48 h-64'>
+              <Image
+              src={card.imgSrc}
+              alt={card.title}
               width={200}
               height={300}
-              className="w-full absolute inset-0 [backface-visibility:hidden] h-auto"
-            />
-            <div className={`bg-black absolute inset-0 ${setCards} ? '[transform-style:preserve-3d] [transform:rotateY(180deg)]':'[backface-visibility:hidden]'}`} ></div>
-            
-          </div>
-          <div className="w-48 h-64 overflow-hidden hover:scale-120">
-            <Image onClick={()=> startGame(true)}
-              src="/theBellJar.jpg"
-              alt="The Bell Jar Cover"
-              width={200}
-              height={300}
-              className="w-full h-auto"
-            />
-          </div>
-          <div className="w-48 h-64 overflow-hidden hover:scale-120">
-            <Image
-              src="/theTalentedMrRipley.jpg"
-              alt="The Talented Mr. Ripley Cover"
-              width={200}
-              height={300}
-              className="w-full h-auto"
-            />
-          </div>
+              className='w-full h-auto'
+              />
+            </div>
+          ))}
         </div>
        
           
