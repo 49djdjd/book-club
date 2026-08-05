@@ -1,4 +1,5 @@
 'use client'
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 const Icards = [
@@ -46,7 +47,7 @@ export default function Home(){
           <div className="flex items-center [perspective:1000px] justify-center mt-10 gap-4">
           {/* learned how to use the map function to go through arrays and what key was*/}
           {cards.map((card) => (
-            <div key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer  w-48 h-64'>
+            <motion.div layout transition={{ type: "spring", stiffness: 300, damping: 45 }} key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer  w-48 h-64'>
             {card.isFlipped ? (
               <Image
               src={card.imgSrc}
@@ -59,7 +60,7 @@ export default function Home(){
             ) : (
            <div className='w-full h-full bg-stone-400'></div>
             )}
-            </div>
+            </motion.div>
           ))}
         </div>
        
