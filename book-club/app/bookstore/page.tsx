@@ -58,15 +58,14 @@ export default function Home(){
           <div className="flex items-center [perspective:1000px] justify-center mt-10 gap-4">
           {/* learned how to use the map function to go through arrays and what key was*/}
           {cards.map((card) => (
-            <motion.div layout transition={{ type: "spring", stiffness: 300, damping: 30 }} key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer [perspective:1000px] w-48 h-64'>
+            <motion.div layout transition={{ type: "spring", stiffness: 300, damping: 30 }} key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer [perspective:1000px] w-48 h-70'>
               {/* referneced ai for syntax but plugged everything in myself for flipping */}
             <motion.div className="w-full h-full relative [transform-style:preserve-3d]" animate={{ rotateY: card.isFlipped ? 0 : 180 }} transition={{ duration: 0.9 }}>
               <Image
               src={card.imgSrc}
               alt={card.title}
-              width={200}
-              height={300}
-              className='w-full h-auto' 
+              fill
+              className='w-full object-cover h-auto' 
               />
            <div className='w-full h-full bg-stone-400 absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]'></div>
             </motion.div>
@@ -74,6 +73,7 @@ export default function Home(){
           ))}
         </div>
        
+
           
         {}
       </main>
