@@ -3,14 +3,11 @@ import Image from 'next/image';
 import { useState } from 'react';
 const Icards = [
   {id: 1, bookId: 'stoner', title: 'Stoner', imgSrc:'/1stonerBook.jpg', isFlipped: false, isMatched: false},
-  {id: 2, bookId: 'stoner', title: 'Stoner', imgSrc:'/1stonerBook.jpg', isFlipped: false, isMatched: false},
-  {id: 3, bookId: 'bell-jar', title: 'The Bell Jar', imgSrc:'/theBellJar.jpg', isFlipped: false, isMatched: false},
-  {id: 4, bookId: 'bell-jar', title: 'The Bell Jar', imgSrc:'/theBellJar.jpg', isFlipped: false, isMatched: false},
-  {id: 5, bookId: 'ripley', title: 'The Talented Mr. Ripley', imgSrc:'/theTalentedMrRipley.jpg', isFlipped: false, isMatched: false},
-  {id: 6, bookId: 'ripley', title: 'The Talented Mr. Ripley', imgSrc:'/theTalentedMrRipley.jpg', isFlipped: false, isMatched: false},
+  {id: 2, bookId: 'bell-jar', title: 'The Bell Jar', imgSrc:'/theBellJar.jpg', isFlipped: false, isMatched: false},
+  {id: 3, bookId: 'ripley', title: 'The Talented Mr. Ripley', imgSrc:'/theTalentedMrRipley.jpg', isFlipped: false, isMatched: false},
 ];
 
-function mixArray(array){
+function mixArray<T>(array:T[]) : T[]{
   // referneced ai for this syntax (i didnt even know about ... before (but now i know lol))
   return[...array].sort(() => Math.random()-0.5);
 }
@@ -18,6 +15,15 @@ export default function Home(){
   const bookTitle = ["Stoner", "The Talented Mr. Ripley", "The Bell Jar"];
   const [game, startGame] = useState(false);
   const [cards, setCards] = useState(Icards);
+  function clickCard(clickedCard : {id: number; bookId: string; title: string; imgSrc: string; isFlipped: boolean; isMatched: boolean;}){
+  if(!game){
+    if(clickedCard.bookId == 'bell-jar'){
+      // used ai to know how to strucutre this line (but was able to implement everything myself!)
+      setCards(mixArray(cards).map(card => ({...card, isFlipped:true})));
+      startGame(true);
+    }
+  }
+  }
   return (
     <div className="flex flex-1 items-center justify-center bg-yellow-50 font-sans">
       <main className="flex flex-1 flex-col w-full max-w-3xl  items-center justify-between py-32 px-16">
@@ -26,7 +32,7 @@ export default function Home(){
             </div>
        {/* used ai to refernce for the card loop (tried it at first but was really confused) */}
           <div className="flex items-center [perspective:1000px] justify-center mt-10 gap-4">
-          {/* learned how to use the map function to go through arrays */}
+          {/* learned how to use the map function to go through arrays and what key was*/}
           {cards.map((card) => (
             <div key={card.id} className='relative w-48 h-64'>
               <Image
