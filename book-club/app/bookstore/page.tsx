@@ -21,9 +21,20 @@ export default function Home(){
     if(clickedCard.bookId == 'bell-jar'){
       // used ai to know how to strucutre this line (but was able to implement everything myself!)
       setCards(mixArray(cards).map(card => ({...card, isFlipped:false})));
+      shuffle();
       startGame(true);
     }
     return;
+  }
+  function shuffle(){
+    let counts = 0;
+    const timer = setInterval(() => {
+      setCards((prevCards) => mixArray(prevCards));
+      counts++;
+      if (counts > 4){
+        clearInterval(timer);
+      }
+  }, 800);
   }
     // this is because react has immutable states
       setCards(prevCards => {
@@ -47,7 +58,7 @@ export default function Home(){
           <div className="flex items-center [perspective:1000px] justify-center mt-10 gap-4">
           {/* learned how to use the map function to go through arrays and what key was*/}
           {cards.map((card) => (
-            <motion.div layout transition={{ type: "spring", stiffness: 300, damping: 45 }} key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer  w-48 h-64'>
+            <motion.div layout transition={{ type: "spring", stiffness: 300, damping: 30 }} key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer  w-48 h-64'>
             {card.isFlipped ? (
               <Image
               src={card.imgSrc}
