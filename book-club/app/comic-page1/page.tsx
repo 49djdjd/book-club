@@ -1,3 +1,3 @@
-export default function ComicPage1() {
+export default function Home() {
   return <div>meow</div>;
 }

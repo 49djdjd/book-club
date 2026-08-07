@@ -41,7 +41,7 @@ export default function Home(){
       setCards(prevCards => {
         return prevCards.map(card => {
           if(card.id == clickedCard.id){
-            return{...card, isFlipped: false}
+            return{...card, isFlipped: !card.isFlipped}
           }
           else{
             return card;
@@ -62,13 +62,15 @@ export default function Home(){
             <motion.div layout transition={{ type: "spring", stiffness: 300, damping: 30 }} key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer [perspective:1000px] w-48 h-70'>
               {/* referneced ai for syntax but plugged everything in myself for flipping */}
             <motion.div className="w-full h-full relative [transform-style:preserve-3d]" animate={{ rotateY: card.isFlipped ? 0 : 180 }} transition={{ duration: 0.9 }}>
+              <div className='[backface-visibility:hidden]'>
               <Image
               src={card.imgSrc}
               alt={card.title}
               fill
               className='w-full object-cover h-auto' 
               />
-           <div onClick={() => setFlipBack(true)} className='w-full h-full bg-stone-400 absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]'></div>
+              </div>
+           <div onClick={() => setFlipBack(true)} className=' w-full h-full bg-stone-400 absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]'></div>
             </motion.div>
             </motion.div>
           ))}
