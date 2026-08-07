@@ -15,6 +15,7 @@ function mixArray<T>(array:T[]) : T[]{
 export default function Home(){
   const bookTitle = ["Stoner", "The Talented Mr. Ripley", "The Bell Jar"];
   const [game, startGame] = useState(false);
+  const[flipBack, setFlipBack] = useState(false);
   const [cards, setCards] = useState(Icards);
   function clickCard(clickedCard : {id: number; bookId: string; title: string; imgSrc: string; isFlipped: boolean; isMatched: boolean;}){
   if(!game){
@@ -55,7 +56,7 @@ export default function Home(){
             <h3 className="text-black font-mono text-xl">Welcome! Which book would you like to purchase? (Remember you can only pick one these books!)</h3>
             </div>
        {/* used ai to refernce for the card loop (tried it at first but was really confused) */}
-          <div className="flex items-center [perspective:1000px] justify-center mt-10 gap-4">
+          <div className="flex items-center [perspective:1000px] justify-center mt-10 gap-10">
           {/* learned how to use the map function to go through arrays and what key was*/}
           {cards.map((card) => (
             <motion.div layout transition={{ type: "spring", stiffness: 300, damping: 30 }} key={card.id} onClick={() => clickCard(card)} className='relative cursor-pointer [perspective:1000px] w-48 h-70'>
@@ -67,7 +68,7 @@ export default function Home(){
               fill
               className='w-full object-cover h-auto' 
               />
-           <div className='w-full h-full bg-stone-400 absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]'></div>
+           <div onClick={() => setFlipBack(true)} className='w-full h-full bg-stone-400 absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]'></div>
             </motion.div>
             </motion.div>
           ))}
