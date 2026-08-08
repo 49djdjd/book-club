@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -13,6 +14,7 @@ function mixArray<T>(array:T[]) : T[]{
   return[...array].sort(() => Math.random()-0.5);
 }
 export default function Home(){
+  const router = useRouter();
   const bookTitle = ["Stoner", "The Talented Mr. Ripley", "The Bell Jar"];
   const [game, startGame] = useState(false);
   const[flipBack, setFlipBack] = useState(false);
@@ -25,20 +27,13 @@ export default function Home(){
       shuffle();
       startGame(true);
     }
+    if(clickedCard.bookId == 'stoner' || clickedCard.bookId == 'ripley'){
+      router.push('/comic-page1');
+    }
     return;
+    
   }
-  function shuffle(){
-    let counts = 0;
-    const timer = setInterval(() => {
-      setCards((prevCards) => mixArray(prevCards));
-      counts++;
-      if (counts > 6){
-        clearInterval(timer);
-      }
-  }, 500);
-  }
-    // this is because react has immutable states
-      setCards(prevCards => {
+  setCards(prevCards => {
         return prevCards.map(card => {
           if(card.id == clickedCard.id){
             return{...card, isFlipped: !card.isFlipped}
@@ -48,7 +43,32 @@ export default function Home(){
           }
           });
         });
+      if(clickedCard.bookId != 'bell-jar'){
+        setTimeout(() =>{
+          router.push('/comic-page1');
+        }, 900);
+        
       }
+
+  }
+  function finalClickCard(clickedCard: {id:number; bookId: string; title:string; imgSrc: string; isFlipped: boolean; isMatched: boolean;}){
+    
+  }
+  function shuffle(){
+    let counts = 0;
+    const timer = setInterval(() => {
+      setCards((prevCards) => mixArray(prevCards));
+      counts++;
+      if (counts > 4){
+        clearInterval(timer);
+      }
+  }, 500);
+  }
+  function clickBack(clickedCard:{id:number; bookId: string; title:string; imgSrc: string; isFlipped: boolean; isMatched:boolean;}){
+      
+}
+    // this is because react has immutable states
+    
   return (
     <div className="flex flex-1 items-center justify-center bg-yellow-50 font-sans">
       <main className="flex flex-1 flex-col w-full max-w-3xl  items-center justify-between py-32 px-16">
@@ -70,7 +90,7 @@ export default function Home(){
               className='w-full object-cover h-auto' 
               />
               </div>
-           <div onClick={() => setFlipBack(true)} className=' w-full h-full bg-stone-400 absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]'></div>
+           <div onClick={() => setFlipBack(true)} className='w-full h-full bg-stone-400 absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]'></div>
             </motion.div>
             </motion.div>
           ))}
