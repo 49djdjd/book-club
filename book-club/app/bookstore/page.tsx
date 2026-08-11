@@ -46,9 +46,13 @@ export default function Home(){
       if(clickedCard.bookId != 'bell-jar'){
         setTimeout(() =>{
           router.push('/comic-page1');
-        }, 900);
-        
+        }, 1000);
       }
+      if(clickedCard.bookId == 'bell-jar'){
+        setTimeout(()=>{
+          router.push('/comic-page2');
+      }, 1000);
+    }
 
   }
   function finalClickCard(clickedCard: {id:number; bookId: string; title:string; imgSrc: string; isFlipped: boolean; isMatched: boolean;}){
